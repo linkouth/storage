@@ -3,22 +3,23 @@
 {% block body %}
     <h1>Список администраторов</h1>
 
-    <table bordercolor="blue" border="1">
-        <thead align="center">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
         <tr>
-            <th>Id</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Email</th>
-            <th>Пароль</th>
-            <th>Роль</th>
-            <th>Соль</th>
+            <th scope="col">Id</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Email</th>
+            <th scope="col">Пароль</th>
+            <th scope="col">Роль</th>
+            <th scope="col">Соль</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody align="center">
             {% for admin in admins %}
                 <tr>
-                    <td><a href="{{ path('admin_show', { 'id': admin.id }) }}">{{ admin.id }}</a></td>
+                    <th scope="row"><a href="{{ path('admin_show', { 'id': admin.id }) }}">{{ admin.id }}</a></th>
                     <td>{{ admin.name }}</td>
                     <td>{{ admin.surname }}</td>
                     <td>{{ admin.email }}</td>
@@ -40,9 +41,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_new') }}">Создать нового администратора</a>
-        </li>
-    </ul>
+    <a href="{{ path('admin_new') }}">Создать нового администратора</a>
 {% endblock %}

@@ -3,23 +3,24 @@
 {% block body %}
     <h1>Список прорабов</h1>
 
-    <table bordercolor="blue" border="1">
-        <thead align="center">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
         <tr>
-            <th>Id</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Email</th>
-            <th>Пароль</th>
-            <th>Роль</th>
-            <th>Соль</th>
-            <th>Грузчики</th>
+            <th scope="col">Id</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Email</th>
+            <th scope="col">Пароль</th>
+            <th scope="col">Роль</th>
+            <th scope="col">Соль</th>
+            <th scope="col">Грузчики</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody align="center">
             {% for foreman in foremen %}
                 <tr>
-                    <td><a href="{{ path('foreman_show', { 'id': foreman.id }) }}">{{ foreman.id }}</a></td>
+                    <th scope="row"><a href="{{ path('foreman_show', { 'id': foreman.id }) }}">{{ foreman.id }}</a></th>
                     <td>{{ foreman.name }}</td>
                     <td>{{ foreman.surname }}</td>
                     <td>{{ foreman.email }}</td>
@@ -42,9 +43,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('foreman_new') }}">Создать нового прораба</a>
-        </li>
-    </ul>
+    <a href="{{ path('foreman_new') }}">Создать нового прораба</a>
 {% endblock %}
